@@ -6,3 +6,4 @@ mn1 <- mean(v4)
 mx <- max(v4)
 mn2 <- min(v4)
 
+
