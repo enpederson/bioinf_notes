@@ -39,9 +39,19 @@ avgscores = as.data.frame(avgscores)
 colnames(avgscores) #need the column name for ggplot
 
 ggplot(avgscores) +
-  geom_histogram(aes(x=avgscores), binwidth=0.2) +
+  geom_histogram(aes(x=avgscores), binwidth=0.25) +
   theme_linedraw() +
   xlab('Quality Score') +
   ggtitle('Per Read Average Quality')
 
 mdata = cbind(widths, avgscores)
+
+
+(widthplot <- ggplot(widths) +
+    geom_density_2d(aes(x=reads@ranges@width, y=avgscores)) + 
+    #theme_linedraw() + 
+    xlab('Read Length (bp)') +
+    ggtitle('2D Density'))
+
+#blog post about the code. including how to set up BioConductor. Plot relationship between reads and quality
+
