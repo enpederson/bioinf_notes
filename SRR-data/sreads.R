@@ -22,12 +22,13 @@ my_breaks = c(1,2,4,8,16,32,64,128,256,512,1024)
 ggplot(mdata,aes(x=reads@ranges@width,y=avgscores)) +
   geom_bin2d(bins = 48) +
   #geom_point(size=0.5,alpha=0.1,colour="white") +
-  #geom_density_2d(colour="blue",bins=25) +
+  
   #stat_density_2d(aes(fill = ..level..), geom = "polygon", colour="white") +
-  scale_fill_gradient(name = "count", trans = "log",
+  scale_fill_gradient(low="lightblue2",high="darkblue", name = "count", trans = "log",
                       breaks = my_breaks, labels = my_breaks) +
   scale_x_log10(breaks = trans_breaks("log10", function(x) 10^x),
   labels = trans_format("log10", math_format(10^.x))) +
+  #geom_density_2d(colour="white",bins=6) +
   theme_linedraw() +
   ggtitle('2D Density') +
   #ylab('Average Scores') +
