@@ -48,10 +48,22 @@ mdata = cbind(widths, avgscores)
 
 
 ggplot(mdata) +
+<<<<<<< HEAD
     geom_density_2d(aes(x=reads@ranges@width,y=avgscores)) +
     theme_linedraw() +
     xlab('Read Length (bp)') +
     ggtitle('2D Density')
+=======
+  #geom_point(aes(x=reads@ranges@width,y=avgscores)) +
+  geom_density_2d(aes(x=reads@ranges@width,y=avgscores)) +
+  theme_linedraw() +
+  xlab('Read Length (bp)') +
+  ggtitle('2D Density')
 
 #blog post about the code. including how to set up BioConductor. Plot relationship between reads and quality
 
+ggplot(mdata) +
+  #geom_point(aes(x=reads@ranges@width,y=avgscores)) +
+  stat_density_2d(geom = "point", aes(x=reads@ranges@width, y=avgscores, size = stat(density)), n = 50, contour = FALSE)
+  geom_density_2d(aes(x=reads@ranges@width,y=avgscores)) +
+  theme_linedraw()
