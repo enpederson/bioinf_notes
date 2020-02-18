@@ -13,8 +13,10 @@ library(forcats)
 Sys.setenv(PATH=paste(Sys.getenv("PATH"), "/share/pkg.7/blast+/2.7.1/install/bin", sep=":"))
 Sys.setenv(PATH=paste(Sys.getenv("PATH"), "/share/pkg.7/sratoolkit/2.9.2/install/bin/", sep=":"))
 
-#srr=c('SRR11043480, SRR11043497') #use label from repository
-srr=c('SRR11043480')
+#srr=c('SRR11043480, SRR11043497, SRS6120496') #use label from repository
+#srr=c('SRR11043480') #HW
+#srr=c('SRS6120496') #not much
+srr=c('SRS6120502') #largest dataset
 system(paste('fastq-dump', srr, sep=' ')) #load fastq
 
 dna = readFastq('.', pattern=srr)
@@ -44,7 +46,7 @@ cltax=cbind(cl,taxlist)
 
 cltop = cltax %>% 
   group_by(QueryID) %>% 
-  top_n(n=1, wt=Bits)
+  top_n(n=10, wt=Bits)
 
 
 
