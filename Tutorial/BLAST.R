@@ -46,8 +46,25 @@ cltop = cltax %>%
   group_by(QueryID) %>% 
   top_n(n=1, wt=Bits)
 
+
+
 (ggplot(data=cltop) +
     geom_bar(aes(x=fct_infreq(genus))) +
+    theme_minimal() +
+    theme(    
+      axis.text.x  = element_text(angle = 45, hjust=1)
+    ) +
+    xlab('')
+  
+)
+
+#test
+cltop2 = cltax %>% 
+  group_by(QueryID) %>% 
+  top_n(n=1, wt=Bits)
+
+(ggplot(data=cltop2) +
+    geom_bar(aes(x=fct_infreq(class))) +
     theme_minimal() +
     theme(    
       axis.text.x  = element_text(angle = 45, hjust=1)
