@@ -2,8 +2,9 @@ library(ShortRead)
 library(ggplot2)
 require(scales)
 
-#srr = readFastq('data', pattern='/projectnb/ct-shbioinf/epederso/bioinf_notes/SRR-data/SRR11043480.fastq')
-srr = readFastq('~/Desktop/AppBioinformatics332/bioinf_notes/SRR-data', pattern='8_Swamp_S1B_18S_2019_minq7.fastq')
+download.file("https://sra-download.ncbi.nlm.nih.gov/traces/sra50/SRZ/011043/SRR11043480/8_Swamp_S1B_18S_2019_minq7.fastq","SRR-data/SRR11043480.fastq")
+srr = readFastq('/projectnb/ct-shbioinf/epederso/bioinf_notes/SRR-data/', pattern='SRR11043480.fastq')
+#srr = readFastq('~/Desktop/AppBioinformatics332/bioinf_notes/SRR-data', pattern='8_Swamp_S1B_18S_2019_minq7.fastq')
 
 reads = sread(srr) # the set of sequence data
 idstr = id(srr) # id numbers
